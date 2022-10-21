@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import Header from "../Header";
+import Footer from "../Footer";
 
 export default function History(){
     return(
+        <>
+        <Header/>
         <Main>
             <Title>Histórico</Title>
             <Info>Em breve você poderá ver o histórico dos seus hábitos aqui!</Info>
         </Main>
+        <Footer/>
+        </>
     )
 }
 
@@ -13,7 +19,6 @@ const Main = styled.main`
 display: flex;
 flex-direction:column;
 justify-content: flex-start;
-align-items: center;
 `
 
 const Title = styled.div`
@@ -34,11 +39,6 @@ color: #126BA5;
 `
 
 const Info = styled.div`
-width: 338px;
-height: 74px;
-left: 15px;
-top: 144px;
-
 font-family: 'Lexend Deca';
 font-style: normal;
 font-weight: 400;
@@ -46,4 +46,5 @@ font-size: 17.976px;
 line-height: 22px;
 
 color: #666666;
+
 `
