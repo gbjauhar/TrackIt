@@ -26,7 +26,6 @@ height: 45px;
 margin-top: 10px;
 border: 1px solid #d4d4d4;
 border-radius: 5px;
-filter:brightness(${props => props.disabled ? 0.95 : 1});
 color: #d4d4d4;
 
 }
@@ -52,19 +51,17 @@ button{
     border-radius: 4.63636px;
     margin-top: 5%;
     margin-bottom: 5%;
-    filter:brightness(${props => props.disabled ? 0.95 : 1});
+    filter:brightness(${props => props.disabled? 0.95 : 1});
 }
-
 `
 
-
-export const ButtonText = styled.h1`
-font-family: 'Lexend Deca';
+export const ButtonText = styled.h1` 
+    font-family: 'Lexend Deca';
 font-size: 20.976px;
 color: #FFFFFF;
-display:${props => props.visible ? 'contents' : 'none'};
-`
+display:${props => props.visible ? '' : 'none'};
 
+`
 export const SignUp = styled.div`
 width: 232px;
 height: 17px;

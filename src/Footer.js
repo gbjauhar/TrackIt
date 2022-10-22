@@ -28,6 +28,7 @@ width: 100%;
 background: #FFFFFF;
 display: flex;
 position: absolute;
+bottom: 0px;
 height: 70px;
 display: flex;
 align-items: center;
@@ -51,4 +52,5 @@ border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
+margin-top: -20px;
 `

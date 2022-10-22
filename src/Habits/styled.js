@@ -5,14 +5,12 @@ export const Main = styled.main`
 display: flex;
 flex-direction: column;
 align-items: center;
-background-color: gray;
-background-color: gray;
 `
 
 export const Top = styled.div`
 display: flex;
 margin-top: 80px;
-justify-content: space-between;
+justify-content: space-around;
 p{ 
 font-family: 'Lexend Deca';
 font-style: normal;
@@ -20,6 +18,7 @@ font-weight: 400;
 font-size: 22.976px;
 line-height: 29px;
 color: #126BA5;
+margin-right: 50px;
 }
 button{
     width: 40px;
@@ -41,127 +40,52 @@ color: #ffffff;
 `
 
 export const CreateHabit = styled.div`
-width: 100%;
+width: 340px;
 height: 180px;
-left: 17px;
-
+margin-top: 30px;
 background: #ffffff;
 border-radius: 5px;
 display: flex;
 flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top:20px;
+padding-right: 20px;
+padding-left:19px;
+padding-top: 20px;
+box-sizing: border-box;
 `
 
-export const Text = styled.div`
-margin-top: 30px;
-width: 338px;
-height: 74px;
-left: 19px;
-top: 356px;
-
-font-family: 'Lexend Deca';
-font-style: normal;
-font-weight: 400;
-font-size: 17.976px;
-line-height: 22px;
-
-color: #666666;
-
-`
-
-export const InputText = styled.input`
+export const Form = styled.form`
+input{
 width: 303px;
 height: 45px;
-left: 36px;
-top: 165px;
-
-background: #FFFFFF;
 border: 1px solid #D5D5D5;
 border-radius: 5px;
-font-family: 'Lexend Deca';
-font-style: normal;
-font-weight: 400;
-font-size: 19.976px;
-line-height: 25px;
-margin-bottom: 8px;
-/* identical to box height */
-
-
-color: #DBDBDB;
-
+}
 `
 
-export const InputDay = styled.input`
-width: 30px;
-height: 30px;
-left: 36px;
-top: 218px;
-
-background: #FFFFFF;
-border: 1px solid #D5D5D5;
-border-radius: 5px;
-font-family: 'Lexend Deca';
-font-style: normal;
-font-weight: 400;
-font-size: 19.976px;
-line-height: 25px;
-/* identical to box height */
-
-
-color: #DBDBDB;
-
-`
-
-export const InputsDays = styled.div`
+export const DaysContainer = styled.div`
 display:flex;
-justify-content: flex-start;
+margin-top: 5px;
+position: relative;
+p{
+    position: absolute;
+    left: 120px;
+    font-family: 'Lexende Deca';
+    font-size: 15px;
+    color: #52b6ff;
+    bottom: -45px;
+}
 `
 
 export const Save = styled.button`
 width: 84px;
 height: 35px;
-left: 257px;
-top: 277px;
-
 background: #52B6FF;
 border-radius: 4.63636px;
 font-family: 'Lexend Deca';
-font-style: normal;
-font-weight: 400;
-font-size: 15.976px;
-line-height: 20px;
-/* identical to box height */
-
-text-align: center;
-
+position: absolute;
+top: 50px;
+right: 0px;
 color: #FFFFFF;
-`
-
-export const Cancel = styled.div`
-width: 69px;
-height: 20px;
-left: 165px;
-top: 284px;
-
-font-family: 'Lexend Deca';
-font-style: normal;
-font-weight: 400;
-font-size: 15.976px;
-line-height: 20px;
-/* identical to box height */
-
-text-align: center;
-
-color: #52B6FF;
-`
-
-export const ButtonContainer = styled.div`
-display:flex;
-justify-content: flex-end;
-align-items: center;
-margin-top: 30px;
 `
 export const Habit = styled.div`
 width: 340px;
@@ -179,3 +103,12 @@ line-height: 25px;
 
 color: #666666;
 }`
+
+
+export const Text = styled.div`
+margin-top: 20px;
+margin-left: 20px;
+font-family: 'Lexend Deca';
+font-size: 17.976px;
+color: #666666;
+`

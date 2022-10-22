@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Header from "../Header";
 import Footer from "../Footer";
 import { Main, Top, Habit, Text } from "./styled"
@@ -8,7 +7,7 @@ import { LoginContext } from "../auth";
 
 export default function Today() {
     const [habit, setHabit] = useState([{name: "", currentSequence: "", highestSequence: ""}])
-    const {user, setUser} = useContext(LoginContext)
+    const {user} = useContext(LoginContext)
     const config =  { headers: { "Authorization": `Bearer ${user.token}` } }
     useEffect(() =>
         axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
