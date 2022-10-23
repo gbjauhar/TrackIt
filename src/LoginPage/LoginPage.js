@@ -20,7 +20,7 @@ export default function LoginPage() {
         setNotDisabled(false)
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", form)
             .then(res => setUser(res.data), setDisabled(false), setNotDisabled(true), navigate("/habitos"))
-            .catch(err => alert(err.response.status), setDisabled(true), setNotDisabled(false))
+            .catch(err => alert(err.response.data), setDisabled(true), setNotDisabled(false))
     }
 
     function handleChange(e) {

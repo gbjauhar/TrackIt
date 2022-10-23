@@ -27,7 +27,7 @@ const FooterContainer = styled.footer`
 width: 100%;
 background: #FFFFFF;
 display: flex;
-position: absolute;
+position: fixed;
 bottom: 0px;
 height: 70px;
 display: flex;

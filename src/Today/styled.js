@@ -11,7 +11,7 @@ margin-right: 18px;
 export const Top = styled.div`
 display: flex;
 flex-direction: column;
-margin-top: 22px;
+margin-top: 200px;
 justify-content: flex-start;
 h1{ 
     width: 172px;

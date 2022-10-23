@@ -1,64 +1,123 @@
-import { Link } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
 import ButtonDay from "./ButtonDay";
-import { Main, Top, Habit, CreateHabit, Text, Form, InputText, DaysContainer, Save, Cancel, ButtonContainer } from "./styled"
+import { Main, Top, Habit, CreateHabit, Text, Form, DaysContainer, Save, Day, Between } from "./styled"
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { LoginContext } from "../auth";
-
+import { useNavigate } from "react-router-dom";
+import trash from "../img/trash-outline.svg"
 
 export default function Habits() {
-    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [habit, setHabit] = useState([{ name: "", days: [] }])
     const { user } = useContext(LoginContext)
     const config = { headers: { "Authorization": `Bearer ${user.token}` } }
     const [newHabit, setNewHabit] = useState({ name: "", days: [] })
-      /* useEffect(() =>
-         axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
-         .then(res => setHabit(res.data))) */
-         function post(){
-         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", newHabit, config)
-        .then(res => console.log(res.data)) 
-        } 
-    return (
-        <>
-            <Header />
-            <Main>
-                <Top>
-                    <p>Meus hábitos</p>
-                    <button><h1>+</h1></button>
-                </Top>
-                {/* {habit.map((h) =>   <Habit>
-                    setHabit      <h1>{h.name}</h1>
-                    <InputsDays>
-                    {days.map((d) => <InputDay type="text" placeholder={`${d}`} />)}
-                    </InputsDays>
+    const [showNewHabit, setShowNewHabit] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+    useEffect(() =>
+        axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
+            .then(res => setHabit(res.data)))
+    function post() {
+        setDisabled(true)
+        setShowNewHabit(!showNewHabit)
+        setNewHabit({ name: "", days: [] })
+        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", newHabit, config)
+            .then(res => {
+                console.log(res.data)
+                setDisabled(false)
+            })
+            .catch(res => {
+                console.log(res.response.data)
+                setDisabled(false)
+            })
 
-                </Habit>)} */}
 
-                <CreateHabit>
-                    <Form>
-                        <input
-                            type="text"
-                            placeholder="nome do hábito"
-                            name="name"
-                            value={newHabit.name}
-                            onChange={(e) => setNewHabit({...newHabit, [e.target.name]: e.target.value})} />
-                    </Form>
+    }
+    function showNewHabitContainer() {
+        setShowNewHabit(!showNewHabit)
+    }
 
-                    <DaysContainer>
-                        {days.map((d, index) => <ButtonDay d={d} index={index} newHabit={newHabit}/>)}
-                        <p>Cancelar</p>
-                        <Save onClick={post}>Salvar</Save>
-                    </DaysContainer>
-                </CreateHabit>
-                <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
-            </Main>
-            <Footer />
-        </>
 
-    )
+    if (habit.length === 0) {
+        return (
+            <>
+                <Header />
+                <Main>
+                    <Top>
+                        <p>Meus hábitos</p>
+                        <button onClick={showNewHabitContainer}><h1>+</h1></button>
+                    </Top>
+                    <CreateHabit showNewHabit={showNewHabit}>
+                        <Form>
+                            <input
+                                type="text"
+                                placeholder="nome do hábito"
+                                name="name"
+                                value={newHabit.name}
+                                onChange={(e) => setNewHabit({ ...newHabit, [e.target.name]: e.target.value })}
+                                disabled={disabled} />
+                        </Form>
+
+                        <DaysContainer>
+                            {days.map((d, indx) => <ButtonDay d={d} indx={indx} newHabit={newHabit} disabled={disabled} />)}
+                            <p onClick={showNewHabitContainer}>Cancelar</p>
+                            <Save onClick={post}>Salvar</Save>
+                        </DaysContainer>
+                    </CreateHabit>
+                    <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
+                </Main>
+                <Footer />
+            </>
+        )
+    } else {
+        return (
+            <>
+                <Header />
+                <Main>
+                    <Top>
+                        <p>Meus hábitos</p>
+                        <button onClick={showNewHabitContainer}><h1>+</h1></button>
+                    </Top>
+                    <CreateHabit showNewHabit={showNewHabit}>
+                        <Form>
+                            <input
+                                type="text"
+                                placeholder="nome do hábito"
+                                name="name"
+                                value={newHabit.name}
+                                onChange={(e) => setNewHabit({ ...newHabit, [e.target.name]: e.target.value })}
+                                disabled={disabled} />
+                        </Form>
+
+                        <DaysContainer>
+                            {days.map((d, indx) => <ButtonDay d={d} indx={indx} newHabit={newHabit} disabled={disabled} />)}
+                            <p onClick={showNewHabitContainer}>Cancelar</p>
+                            <Save onClick={post}>Salvar</Save>
+                        </DaysContainer>
+                    </CreateHabit>
+                    <Between>
+                    {habit.map((h) => <Habit>
+                        <Text>{h.name}
+                        </Text>
+                        <DaysContainer>
+                            {days.map((d, indx) => <Day days={h.days} indx={indx}><h1>{d}</h1></Day>)}
+                        </DaysContainer>
+                        <img src={trash} onClick={() => {
+                            if (window.confirm("Tem certeza que quer deletar?")) {
+                                axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${h.id}`, config)
+                                    .then(res => console.log(res.data))
+                            }
+                        }}></img>
+                    </Habit>)}
+                    </Between>
+                </Main>
+                <Footer />
+            </>
+        )
+    }
+
 }
 
 

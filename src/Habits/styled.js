@@ -45,7 +45,7 @@ height: 180px;
 margin-top: 30px;
 background: #ffffff;
 border-radius: 5px;
-display: flex;
+display: ${props => props.showNewHabit ? "flex" : "none"};
 flex-direction: column;
 padding-right: 20px;
 padding-left:19px;
@@ -92,23 +92,54 @@ width: 340px;
 height: 91px;
 background: #FFFFFF;
 border-radius: 5px;
-h1{
-    font-family: 'Lexend Deca';
+margin-top: 30px;
+position:relative;
+display: flex;
+flex-direction: column;
+box-sizing: border-box;
+padding-left: 19px;
+padding-right: 19px;
+padding-top: 19px;
+img{
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    right: 10px;
+
+}
+`
+export const ButtonDelete = styled.button`
+position: absolute;
+    width: 13px;
+    height: 13px;
+    right: 10px;
+`
+export const Text = styled.div`
+font-family: 'Lexend Deca';
 font-style: normal;
 font-weight: 400;
 font-size: 19.976px;
 line-height: 25px;
-/* identical to box height */
-
-
 color: #666666;
-}`
+`
 
+export const Day = styled.div`
+width: 30px;
+height: 30px;
+margin-right: 5px;
+background:${props => props.days.includes(props.indx) ? "#CFCFCF" : "white"};
+border: 1px solid #D5D5D5;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+align-items: center;
+h1{
+    font-family: 'Lexend Deca';
+    font-size: 20px;
+    color: #dbdbdb;
+}
+`
 
-export const Text = styled.div`
-margin-top: 20px;
-margin-left: 20px;
-font-family: 'Lexend Deca';
-font-size: 17.976px;
-color: #666666;
+export const Between = styled.div`
+margin-bottom: 100px;
 `

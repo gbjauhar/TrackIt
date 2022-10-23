@@ -1,18 +1,18 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function ButtonDay({index, d, newHabit}){
-const [clicked, setClicked] = useState(false)
+export default function ButtonDay({indx, d, newHabit, disabled}){
+    const [clicked, setClicked] = useState(false)
 
     function clickedButton(){
         if(!clicked){
             setClicked(!clicked)
-            newHabit.days.push(index)
+            newHabit.days.push(indx)
         }
     }
 
     return(
-        <StyledButton clicked={clicked} onClick={clickedButton}><h1>{d}</h1></StyledButton>
+        <StyledButton clicked={clicked} onClick={clickedButton} disabled={disabled}><h1>{d}</h1></StyledButton>
     )
 }
 
