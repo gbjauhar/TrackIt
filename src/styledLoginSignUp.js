@@ -51,7 +51,9 @@ button{
     border-radius: 4.63636px;
     margin-top: 5%;
     margin-bottom: 5%;
-    filter:brightness(${props => props.disabled? 0.95 : 1});
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 `
 

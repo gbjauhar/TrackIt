@@ -9,18 +9,23 @@ import { LoginContext } from "../auth"
 
 
 export default function LoginPage() {
+    
     const [disabled, setDisabled] = useState(false)
     const { setUser } = useContext(LoginContext)
-    const [notDisabled, setNotDisabled] = useState(true)
     const [form, setForm] = useState({ email: "", password: "" })
     const navigate = useNavigate()
     function login(e) {
         e.preventDefault()
         setDisabled(true)
-        setNotDisabled(false)
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", form)
-            .then(res => setUser(res.data), setDisabled(false), setNotDisabled(true), navigate("/habitos"))
-            .catch(err => alert(err.response.data), setDisabled(true), setNotDisabled(false))
+            .then(res => {
+                setUser(res.data)
+                setDisabled(false)
+                  navigate("/hoje")})
+            .catch(err => {
+                alert(err.response.data)
+                setDisabled(false)
+                })
     }
 
     function handleChange(e) {

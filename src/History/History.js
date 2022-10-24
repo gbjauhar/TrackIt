@@ -6,19 +6,27 @@ export default function History(){
     return(
         <>
         <Header/>
+        <Container>
         <Main>
             <Title>Histórico</Title>
             <Info>Em breve você poderá ver o histórico dos seus hábitos aqui!</Info>
         </Main>
         <Footer/>
+        </Container>
         </>
     )
 }
 
-const Main = styled.main`
+const Container = styled.div`
+justify-content: center;
 display: flex;
-flex-direction:column;
-justify-content: flex-start;
+box-sizing: border-box;
+padding-left: 17px;
+`
+
+const Main = styled.main`
+margin-top:100px;
+height: 100%;
 `
 
 const Title = styled.div`

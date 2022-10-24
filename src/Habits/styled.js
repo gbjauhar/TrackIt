@@ -103,7 +103,7 @@ padding-top: 19px;
 img{
     position: absolute;
     width: 13px;
-    height: 13px;
+    height: 15px;
     right: 10px;
 
 }

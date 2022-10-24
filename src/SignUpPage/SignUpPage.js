@@ -18,8 +18,14 @@ export default function SignUpPage() {
         setDisabled(true)
         setNotDisabled(false)
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", form)
-            .then(res => console.log(res.data), setDisabled(false), setNotDisabled(true), navigate("/"))
-            .catch(res => console.log(res.response.data), setDisabled(true), setDisabled(true), setNotDisabled(false))
+            .then(res => {
+                console.log(res.data)
+                setDisabled(false)
+                setNotDisabled(true)
+                navigate("/")})
+            .catch(res => {
+                console.log(res.response.data)
+                setDisabled(false)})
     }
 
     function handleChange(e) {
@@ -63,7 +69,7 @@ export default function SignUpPage() {
                  disabled={disabled}
                  required/>
               <button disabled={disabled} type="submit">
-                    <ButtonText visible={notDisabled}>Entrar</ButtonText>
+                    <ButtonText visible={!disabled}>Entrar</ButtonText>
                     <ThreeDots
                         height="80"
                         width="80"

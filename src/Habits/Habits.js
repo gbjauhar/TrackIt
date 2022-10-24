@@ -63,7 +63,7 @@ export default function Habits() {
                         <DaysContainer>
                             {days.map((d, indx) => <ButtonDay d={d} indx={indx} newHabit={newHabit} disabled={disabled} />)}
                             <p onClick={showNewHabitContainer}>Cancelar</p>
-                            <Save onClick={post}>Salvar</Save>
+                            <Save disabled={disabled} onClick={post}>Salvar</Save>
                         </DaysContainer>
                     </CreateHabit>
                     <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
